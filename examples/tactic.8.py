@@ -1,0 +1,5 @@
+x, y = Ints('x y')
+s = Tactic('smt').solver()
+s.add(x > y + 1)
+print s.check()
+print s.model()

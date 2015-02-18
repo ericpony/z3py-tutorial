@@ -1,0 +1,240 @@
+<html>
+<head>
+<title>Z3Py Fixedpoints</title>
+<link rel=StyleSheet href="style.css" type="text/css">
+</head>
+<body>
+
+<h1>Fixedpoints</h1>
+
+<p>
+</p>
+
+<p>
+This tutorial illustrates uses of Z3's fixedpoint engine.
+The following papers
+<a href="http://research.microsoft.com/en-us/people/nbjorner/z3fix.pdf">
+&mu;Z - An Efficient Engine for Fixed-Points with Constraints.</a>
+(CAV 2011) and
+<a href="http://research.microsoft.com/en-us/people/nbjorner/z3pdr.pdf">
+Generalized Property Directed Reachability</a> (SAT 2012)
+describe some of the main features of the engine.
+</p>
+
+<p>
+Please send feedback, comments and/or corrections to 
+<a href="mailto:nbjorner@microsoft.com">nbjorner@microsoft.com</a>.
+</p>
+
+<h2>Introduction</h2>
+
+
+<p>
+This tutorial covers some of the fixedpoint utilities available with Z3.
+The main features are a basic Datalog engine, an engine with relational
+algebra and an engine based on a generalization of the Property
+Directed Reachability algorithm.
+</p>
+
+
+<h2>Basic Datalog </h2>
+
+<p>The default fixed-point engine is a bottom-up Datalog engine. 
+It works with finite relations and uses finite table representations
+as hash tables as the default way to represent finite relations.
+</p>
+
+<h3>Relations, rules and queries</h3>
+
+The first example illustrates how to declare relations, rules and
+how to pose queries.
+
+<pre pref="fixedpoint.1" />
+
+The example illustrates some of the basic constructs.
+<pre>
+  fp = Fixedpoint()
+</pre>
+creates a context for fixed-point computation.
+<pre>
+ fp.register_relation(a.decl(), b.decl(), c.decl())
+</pre>
+Register the relations <tt>a, b, c</tt> as recursively defined.
+<pre>
+ fp.rule(a,b)
+</pre>
+Create the rule that <tt>a</tt> follows from <tt>b</tt>. 
+In general you can create a rule with multiple premises and a name using 
+the format
+<pre>
+ fp.rule(<em>head</em>,[<em>body1,...,bodyN</em>],<em>name</em>)
+</pre>
+The <em>name</em> is optional. It is used for tracking the rule in derivation proofs.
+
+Continuing with the example, <tt>a</tt> is false unless <tt>b</tt> is established.
+<pre>
+ fp.query(a)
+</pre>
+Asks if <tt>a</tt> can be derived. The rules so far say that <tt>a</tt> 
+follows if <tt>b</tt> is established and that <tt>b</tt> follows if <tt>c</tt> 
+is established. But nothing establishes <tt>c</tt> and <tt>b</tt> is also not
+established, so <tt>a</tt> cannot be derived.
+<pre>
+ fp.fact(c)
+</pre>
+Add a fact (shorthand for <tt>fp.rule(c,True)</tt>).
+Now it is the case that <tt>a</tt> can be derived.
+
+<h3>Explanations</h3>
+<p>
+It is also possible to get an explanation for a derived query.
+For the finite Datalog engine, an explanation is a trace that
+provides information of how a fact was derived. The explanation
+is an expression whose function symbols are Horn rules and facts used
+in the derivation.
+</p>
+<pre pref="fixedpoint.2" />
+
+<h3>Relations with arguments</h3>
+<p>
+Relations can take arguments. We illustrate relations with arguments
+using edges and paths in a graph.
+</p>
+<pre pref="fixedpoint.3" />
+
+The example uses the declaration
+<pre>
+ fp.declare_var(a,b,c)
+</pre>
+to instrument the fixed-point engine that <tt>a, b, c</tt> 
+should be treated as variables
+when they appear in rules. Think of the convention as they way bound variables are
+passed to quantifiers in Z3Py.
+
+<h3>Rush Hour</h3>
+<p>
+A more entertaining example of using the basic fixed point engine
+is to solve the Rush Hour puzzle. The puzzle is about moving
+a red car out of a gridlock. We have encoded a configuration 
+and compiled a set of rules that encode the legal moves of the cars
+given the configuration. Other configurations can be tested by
+changing the parameters passed to the constructor for <t>Car</t>.
+We have encoded the configuration from 
+<a href="http://www.puzzles.com/products/RushHour/RHfromMarkRiedel/Jam.html?40" target=_top> 
+an online puzzle you can solve manually, or cheat on by asking Z3</a>.
+</p>
+<pre pref="fixedpoint.4" />
+
+
+<h2>Abstract Domains</h2>
+The underlying engine uses table operations 
+that are based on relational algebra. Representations are
+opaque to the underlying engine. 
+Relational algebra operations are well defined for arbitrary relations.
+They don't depend on whether the relations denote a finite or an 
+infinite set of values.
+Z3 contains two built-in tables for infinite domains.
+The first is for intervals of integers and reals.
+The second is for bound constraints between two integers or reals. 
+A bound constraint is of the form <tt>x < y</tt> or <tt> x <= y</tt>.
+When used in conjunction, they form
+an abstract domain that is called the 
+<a href="http://www.sciencedirect.com/science/article/pii/S0167642309000719">
+<em>Pentagon</em></a> abstract
+domain. Z3 implements <em>reduced products</em>
+of abstract domains that enables sharing constraints between
+the interval and bounds domains.
+
+<p>
+Below we give a simple example that illustrates a loop at location <tt>l0</tt>.
+The loop is incremented as long as the loop counter does not exceed an upper
+bound. Using the combination of bound and interval domains
+we can collect derived invariants from the loop and we can also establish
+that the state after the loop does not exceed the bound.
+</p>
+
+
+<pre pref="fixedpoint.5" />
+
+The example uses the option
+<pre>
+   set_option(dl_compile_with_widening=True)
+</pre>
+to instrument Z3 to apply abstract interpretation <em>widening</em> on loop boundaries. 
+
+
+<h2>Engine for Property Directed Reachability</h2>
+
+A different underlying engine for fixed-points is based on
+an algorithm for <it>Property Directed Reachability (PDR)</it>.
+The PDR engine is enabled using the instruction
+<pre>
+  set_option(dl_engine=1)
+</pre>
+The version in Z3 applies to Horn clauses with arithmetic and
+Boolean domains. When using arithmetic you should enable
+the main abstraction engine used in Z3 for arithmetic in PDR.
+<pre>
+ set_option(dl_pdr_use_farkas=True)
+</pre>
+The engine also works with domains using algebraic
+data-types and bit-vectors, although it is currently not
+overly tuned for either.
+The PDR engine is targeted at applications from symbolic model 
+checking of software. The systems may be infinite state. 
+The following examples also serve a purpose of showing 
+how software model checking problems (of safety properties)
+can be embedded into Horn clauses and solved using PDR.
+
+<h3>Procedure Calls</h3>
+<p>
+McCarthy's 91 function illustrates a procedure that calls itself recursively
+twice. The Horn clauses below encode the recursive function:
+
+<pre>
+  mc(x) = if x > 100 then x - 10 else mc(mc(x+11))
+</pre>
+
+The general scheme for encoding recursive procedures is by creating a predicate
+for each procedure and adding an additional output variable to the predicate.
+Nested calls to procedures within a body can be encoded as a conjunction
+of relations.
+</p>
+
+<pre pref="fixedpoint.8" />
+
+The first two queries are unsatisfiable. The PDR engine produces the same proof of unsatisfiability.
+The proof is an inductive invariant for each recursive predicate. The PDR engine introduces a
+special query predicate for the query.
+
+<h3>Bakery</h3>
+
+<p>
+We can also prove invariants of reactive systems. It is convenient to encode reactive systems
+as guarded transition systems. It is perhaps for some not as convenient to directly encode 
+guarded transitions as recursive Horn clauses. But it is fairly easy to write a translator
+from guarded transition systems to recursive Horn clauses. We illustrate a translator
+and Lamport's two process Bakery algorithm in the next example.
+</p>
+
+<pre pref="fixedpoint.9" />
+The rather verbose (and in no way minimal) inductive invariants are produced as answers.
+
+<h3>Functional Programs</h3>
+We can also verify some properties of functional programs using Z3's 
+generalized PDR. Let us here consider an example from 
+<a href="http://www.kb.is.s.u-tokyo.ac.jp/~uhiro/">
+<em>Predicate Abstraction and CEGAR for Higher-Order Model 
+Checking, Kobayashi et.al. PLDI 2011</em></a>.
+We encode functional programs by taking a suitable operational
+semantics and encoding an evaluator that is specialized to
+the program being verified (we don't encode a general purpose
+evaluator, you should partial evaluate it to help verification).
+We use algebraic data-types to encode the current closure that is
+being evaluated.
+
+<pre pref="fixedpoint.10" />
+
+
+</body>
+</html>
