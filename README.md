@@ -6,4 +6,4 @@ This project archives the files in the official z3py [website](http://rise4fun.c
 * [Fixpoint computation] (http://ericpony.github.io/z3py-tutorial/fixpoints-examples.htm)
 * [Advanced topics] (http://ericpony.github.io/z3py-tutorial/advanced-examples.htm)
 * [Module API] (http://ericpony.github.io/z3py-tutorial/module-api.htm)
-* [Namespace reference] (http://ericpony.github.io/z3py-tutorial/namespacez3py.html)
+* [Namespace reference] (http://ericpony.github.io/z3py-tutorial/namespace/namespacez3py.html)
