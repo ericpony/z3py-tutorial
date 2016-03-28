@@ -6,7 +6,7 @@ This project archives the files in the official [Z3py website](http://rise4fun.c
 * [Strategies] (http://ericpony.github.io/z3py-tutorial/strategies-examples.htm)
 * [Fixed-point computation] (http://ericpony.github.io/z3py-tutorial/fixpoint-examples.htm)
 * [Advanced topics] (http://ericpony.github.io/z3py-tutorial/advanced-examples.htm)
-* [Module API] (http://ericpony.github.io/z3py-tutorial/module-api.htm)
+* [Module API] (http://ericpony.github.io/z3py-tutorial/module-api.html)
 * [Namespace reference] (http://ericpony.github.io/z3py-tutorial/namespace/namespacez3py.html)
 
 The source code of Z3Py is available in the Z3 distribution, where you can also find APIs in C, .NET, OCaml, and Java. Other cool front-ends for Z3 includes [ScalaZ3](https://github.com/epfl-lara/ScalaZ3) and [SBV](https://github.com/LeventErkok/sbv).
