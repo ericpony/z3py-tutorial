@@ -8,14 +8,14 @@
 
 <h1>Z3 API in Python</h1>
 <p>Z3 is a high performance theorem prover developed at <a target="_blank" href="http://research.microsoft.com">Microsoft Research</a>.
-Z3 is used in many applications such as: software/hardware verification and testing, constraint solving, analysis of hybrid systems, 
+Z3 is used in many applications such as: software/hardware verification and testing, constraint solving, analysis of hybrid systems,
 security, biology (in silico analysis), and geometrical problems.</p>
-<p>This tutorial demonstrates the main capabilities of Z3Py: the Z3 API in <a target="_blank" href="http://www.python.org">Python</a>. 
-No Python background is needed to read this tutorial. However, it is useful to learn Python (a fun language!) at some point, and 
+<p>This tutorial demonstrates the main capabilities of Z3Py: the Z3 API in <a target="_blank" href="http://www.python.org">Python</a>.
+No Python background is needed to read this tutorial. However, it is useful to learn Python (a fun language!) at some point, and
 there are many excellent free resources for doing so (<a target="_blank" href="http://docs.python.org/tutorial/">Python Tutorial</a>).
 </p>
 
-<p>The Z3 distribution also contains the <b>C</b>, <b>.Net</b> and <b>OCaml</b> APIs. The source code of Z3Py is available in 
+<p>The Z3 distribution also contains the <b>C</b>, <b>.Net</b> and <b>OCaml</b> APIs. The source code of Z3Py is available in
 the Z3 distribution, feel free to modify it to meet your needs. The source code also demonstrates how to use new features in Z3 4.0.
 Other cool front-ends for Z3 include <a target="_blank" href="http://lara.epfl.ch/~psuter/ScalaZ3/">Scala^Z3</a> and <a target="_blank" href="http://hackage.haskell.org/package/sbv">SBV</a>.</p>
 
@@ -113,10 +113,10 @@ Like Python, <tt>**</tt> is the power operator. Z3 can solve nonlinear <i>polyno
 </body></html></example>
 
 <p>
-The procedure <tt>Real('x')</tt> creates the real variable <tt>x</tt>. 
+The procedure <tt>Real('x')</tt> creates the real variable <tt>x</tt>.
 Z3Py can represent arbitrarily large integers, rational numbers (like in the example above),
-and irrational algebraic numbers. An irrational algebraic number is a root of a polynomial with integer coefficients. 
-Internally, Z3 represents all these numbers precisely. 
+and irrational algebraic numbers. An irrational algebraic number is a root of a polynomial with integer coefficients.
+Internally, Z3 represents all these numbers precisely.
 The irrational numbers are displayed in decimal notation for making it easy to read the results.
 </p>
 
@@ -184,7 +184,7 @@ A system of constraints may not have a solution. In this case, we say the system
 </body></html></example>
 
 <p>
-Like in Python, comments begin with the hash character <tt>#</tt> and are terminated by the end of line. 
+Like in Python, comments begin with the hash character <tt>#</tt> and are terminated by the end of line.
 Z3Py does not support comments that span more than one line.
 </p>
 
@@ -208,7 +208,7 @@ The following example shows how to solve a simple set of Boolean constraints.
 <span class="n">q</span> <span class="o">=</span> <span class="n">Bool</span><span class="p">(</span><span class="s">'q'</span><span class="p">)</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">Bool</span><span class="p">(</span><span class="s">'r'</span><span class="p">)</span>
 <span class="n">solve</span><span class="p">(</span><span class="n">Implies</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">),</span> <span class="n">r</span> <span class="o">==</span> <span class="n">Not</span><span class="p">(</span><span class="n">q</span><span class="p">),</span> <span class="n">Or</span><span class="p">(</span><span class="n">Not</span><span class="p">(</span><span class="n">p</span><span class="p">),</span> <span class="n">r</span><span class="p">))</span>
-      
+
 </pre></div>
 </body></html></example>
 
@@ -225,7 +225,7 @@ The Python Boolean constants <tt>True</tt> and <tt>False</tt> can be used to bui
 </pre></div>
 </body></html></example>
 
-<p>The following example uses a combination of polynomial and Boolean constraints. 
+<p>The following example uses a combination of polynomial and Boolean constraints.
 </p>
 
 <example pref="z3py.9"><html><body>
@@ -272,17 +272,17 @@ The following example demonstrates the basic Solver API.
 <p>
 The command <tt>Solver()</tt> creates a general purpose solver. Constraints can be added using the method <tt>add</tt>.
 We say the constraints have been <b>asserted</b> in the solver. The method <tt>check()</tt> solves the asserted constraints.
-The result is <tt>sat</tt> (satisfiable) if a solution was found. The result is <tt>unsat</tt> (unsatisfiable) if 
+The result is <tt>sat</tt> (satisfiable) if a solution was found. The result is <tt>unsat</tt> (unsatisfiable) if
 no solution exists. We may also say the system of asserted constraints is <b>infeasible</b>. Finally, a solver may fail
-to solve a system of constraints and <tt>unknown</tt> is returned.   
+to solve a system of constraints and <tt>unknown</tt> is returned.
 </p>
 
 <p>
-In some applications, we want to explore several similar problems that share several constraints. 
-We can use the commands <tt>push</tt> and <tt>pop</tt> for doing that. 
-Each solver maintains a stack of assertions. The command <tt>push</tt> creates a new scope by 
-saving the current stack size. 
-The command <tt>pop</tt> removes any assertion performed between it and the matching <tt>push</tt>. 
+In some applications, we want to explore several similar problems that share several constraints.
+We can use the commands <tt>push</tt> and <tt>pop</tt> for doing that.
+Each solver maintains a stack of assertions. The command <tt>push</tt> creates a new scope by
+saving the current stack size.
+The command <tt>pop</tt> removes any assertion performed between it and the matching <tt>push</tt>.
 The <tt>check</tt> method always operates on the content of solver assertion stack.
 </p>
 
@@ -326,7 +326,7 @@ the <tt>check</tt> method.
 The command <tt>check</tt> returns <tt>sat</tt> when Z3 finds a solution for the set of asserted constraints.
 We say Z3 <b>satisfied</b> the set of constraints. We say the solution is a <b>model</b> for the set of asserted
 constraints. A model is an <b>interpretation</b> that makes each asserted constraint <b>true</b>.
-The following example shows the basic methods for inspecting models. 
+The following example shows the basic methods for inspecting models.
 </p>
 
 <example pref="z3py.13"><html><body>
@@ -356,7 +356,7 @@ z = Real('z')
 
 <p>
 The expression <tt>m[x]</tt> returns the interpretation of <tt>x</tt> in the model <tt>m</tt>.
-The expression <tt>"%s = %s" % (d.name(), m[d])</tt> returns a string where the first <tt>%s</tt> is replaced with 
+The expression <tt>"%s = %s" % (d.name(), m[d])</tt> returns a string where the first <tt>%s</tt> is replaced with
 the name of <tt>d</tt> (i.e., <tt>d.name()</tt>), and the second <tt>%s</tt> with a textual representation of the
 interpretation of <tt>d</tt> (i.e., <tt>m[d]</tt>). Z3Py automatically converts Z3 objects into a textual representation
 when needed.
@@ -408,7 +408,7 @@ The following example demonstrates different ways to declare integer and real va
 
 <p>The command <tt>help_simplify()</tt> prints all available options.
 Z3Py allows users to write option in two styles. The Z3 internal option names start with <tt>:</tt> and words are separated by <tt>-</tt>.
-These options can be used in Z3Py. Z3Py also supports Python-like names, 
+These options can be used in Z3Py. Z3Py also supports Python-like names,
 where <tt>:</tt> is suppressed and <tt>-</tt> is replaced with <tt>_</tt>.
 The following example demonstrates how to use both styles.
 </p>
@@ -446,12 +446,12 @@ It displays Z3 internal representation for mathematical formulas and expressions
 <h2>Machine Arithmetic</h2>
 
 <p>
-Modern CPUs and main-stream programming languages use 
+Modern CPUs and main-stream programming languages use
 arithmetic over fixed-size bit-vectors.
 Machine arithmetic is available in Z3Py as <i>Bit-Vectors</i>.
-They implement the 
-precise semantics of unsigned and of 
-signed <a target="_blank" href="http://en.wikipedia.org/wiki/Two's_complement">two-complements arithmetic</a>. 
+They implement the
+precise semantics of unsigned and of
+signed <a target="_blank" href="http://en.wikipedia.org/wiki/Two's_complement">two-complements arithmetic</a>.
 
 </p>
 <p>
@@ -484,11 +484,11 @@ The function <tt>BitVecVal(10, 32)</tt> creates a bit-vector of size <tt>32</tt>
 </body></html></example>
 
 <p>
-In contrast to programming languages, such as C, C++, C#, Java, 
+In contrast to programming languages, such as C, C++, C#, Java,
 there is no distinction between signed and unsigned bit-vectors
 as numbers. Instead, Z3 provides special signed versions of arithmetical operations
 where it makes a difference whether the bit-vector is treated as signed or unsigned.
-In Z3Py, the operators 
+In Z3Py, the operators
 <tt class="pre">&lt;</tt>,
 <tt class="pre">&lt;=</tt>,
 <tt class="pre">&gt;</tt>,
@@ -520,7 +520,7 @@ The corresponding unsigned operators are
 </body></html></example>
 
 <p>
-The operator <tt>&gt;&gt;</tt> is the arithmetic shift right, and 
+The operator <tt>&gt;&gt;</tt> is the arithmetic shift right, and
 <tt>&lt;&lt;</tt> is the shift left. The logical shift right is the operator <tt>LShR</tt>.
 </p>
 
@@ -539,7 +539,7 @@ The operator <tt>&gt;&gt;</tt> is the arithmetic shift right, and
 <h2>Functions</h2>
 
 <p>
-Unlike programming languages, where functions have side-effects, can throw exceptions, 
+Unlike programming languages, where functions have side-effects, can throw exceptions,
 or never return, functions in Z3 have no side-effects and are <b>total</b>.
 That is, they are defined on all input values. This includes functions, such
 as division. Z3 is based on <a target="_blank" href="http://en.wikipedia.org/wiki/First-order_logic">first-order logic</a>.
@@ -552,7 +552,7 @@ That is, they allow any interpretation that is consistent with the constraint <t
 </p>
 
 <p>
-More precisely, function and constant symbols in pure first-order logic are <i>uninterpreted</i> or <i>free</i>, 
+More precisely, function and constant symbols in pure first-order logic are <i>uninterpreted</i> or <i>free</i>,
 which means that no a priori interpretation is attached.
 This is in contrast to functions belonging to the signature of theories,
 such as arithmetic where the function <tt>+</tt> has a fixed standard interpretation
@@ -580,7 +580,7 @@ applied twice to <tt>x</tt> results in <tt>x</tt> again, but <tt>f</tt> applied 
 is <tt>1</tt> for all <tt>a</tt> different from <tt>0</tt> and <tt>1</tt>.
 </p>
 
-<p>In Z3, we can also evaluate expressions in the model for a system of constraints. The following example shows how to 
+<p>In Z3, we can also evaluate expressions in the model for a system of constraints. The following example shows how to
 use the <tt>evaluate</tt> method.</p>
 
 <example pref="z3py.15"><html><body>
@@ -599,15 +599,15 @@ use the <tt>evaluate</tt> method.</p>
 <h2>Satisfiability and Validity</h2>
 
 <p>A formula/constraint <tt>F</tt> is <b>valid</b> if <tt>F</tt> always evaluates to true for any assignment of appropriate values to its
-uninterpreted symbols. 
+uninterpreted symbols.
 A formula/constraint <tt>F</tt> is <b>satisfiable</b> if there is some assignment of appropriate values
-to its uninterpreted  symbols under which <tt>F</tt> evaluates to true. 
+to its uninterpreted  symbols under which <tt>F</tt> evaluates to true.
 Validity is about finding a proof of a statement; satisfiability is about finding a solution to a set of constraints.
-Consider a formula <tt>F</tt> containing <tt>a</tt> and <tt>b</tt>. 
-We can ask whether <tt>F</tt> is valid, that is whether it is always true for any combination of values for 
+Consider a formula <tt>F</tt> containing <tt>a</tt> and <tt>b</tt>.
+We can ask whether <tt>F</tt> is valid, that is whether it is always true for any combination of values for
 <tt>a</tt> and <tt>b</tt>. If <tt>F</tt> is always
-true, then <tt>Not(F)</tt> is always false, and then <tt>Not(F)</tt> will not have any satisfying assignment (i.e., solution); that is, 
-<tt>Not(F)</tt> is unsatisfiable. That is, 
+true, then <tt>Not(F)</tt> is always false, and then <tt>Not(F)</tt> will not have any satisfying assignment (i.e., solution); that is,
+<tt>Not(F)</tt> is unsatisfiable. That is,
 <tt>F</tt> is valid precisely when <tt>Not(F)</tt> is not satisfiable (is unsatisfiable).
 Alternately,
 <tt>F</tt> is satisfiable if and only if <tt>Not(F)</tt> is not valid (is invalid).
@@ -665,7 +665,7 @@ The following example demonstrates how to use Python list comprehensions in Z3Py
 <span class="k">print</span> <span class="n">And</span><span class="p">(</span><span class="n">X_gt_Y</span><span class="p">)</span>
 
 <span class="c"># Create a 3x3 "matrix" (list of lists) of integer variables</span>
-<span class="n">X</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span> <span class="n">Int</span><span class="p">(</span><span class="s">"x_</span><span class="si">%s</span><span class="s">_</span><span class="si">%s</span><span class="s">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">]</span> 
+<span class="n">X</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span> <span class="n">Int</span><span class="p">(</span><span class="s">"x_</span><span class="si">%s</span><span class="s">_</span><span class="si">%s</span><span class="s">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">]</span>
       <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">]</span>
 <span class="n">pp</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </pre></div>
@@ -676,8 +676,8 @@ The following example demonstrates how to use Python list comprehensions in Z3Py
 <p>The command <tt>pp</tt> is similar to <tt>print</tt>, but it uses Z3Py formatter for lists and tuples instead of Python's formatter.</p>
 
 <p>Z3Py also provides functions for creating vectors of Boolean, Integer and Real variables. These functions
-are implemented using list comprehensions. 
-</p> 
+are implemented using list comprehensions.
+</p>
 
 <example pref="list.2"><html><body>
 <div class="highlight"><pre><span class="n">X</span> <span class="o">=</span> <span class="n">IntVector</span><span class="p">(</span><span class="s">'x'</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
@@ -707,10 +707,10 @@ In Z3Py notation, we can write these equations as:
 <h3>Problem 1</h3>
 
 <p>
-Ima Hurryin is approaching a stoplight moving with a velocity of <tt>30.0</tt> m/s. 
-The light turns yellow, and Ima applies the brakes and skids to a stop. 
+Ima Hurryin is approaching a stoplight moving with a velocity of <tt>30.0</tt> m/s.
+The light turns yellow, and Ima applies the brakes and skids to a stop.
 If Ima's acceleration is <tt>-8.00</tt> m/s<sup>2</sup>, then determine the displacement of the
-car during the skidding process. 
+car during the skidding process.
 </p>
 
 <example pref="k.1"><html><body>
@@ -730,7 +730,7 @@ car during the skidding process.
     <span class="n">a</span>   <span class="o">==</span> <span class="o">-</span><span class="mi">8</span>
 <span class="p">]</span>
 <span class="k">print</span> <span class="s">"Problem:"</span>
-<span class="k">print</span> <span class="n">problem</span> 
+<span class="k">print</span> <span class="n">problem</span>
 
 <span class="k">print</span> <span class="s">"Solution:"</span>
 <span class="n">solve</span><span class="p">(</span><span class="n">equations</span> <span class="o">+</span> <span class="n">problem</span><span class="p">)</span>
@@ -832,7 +832,7 @@ How many of each should you buy?
       <span class="n">cat</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">,</span>   <span class="c"># at least one cat</span>
       <span class="n">mouse</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">,</span> <span class="c"># at least one mouse</span>
       <span class="c"># we want to buy 100 animals</span>
-      <span class="n">dog</span> <span class="o">+</span> <span class="n">cat</span> <span class="o">+</span> <span class="n">mouse</span> <span class="o">==</span> <span class="mi">100</span><span class="p">,</span>  
+      <span class="n">dog</span> <span class="o">+</span> <span class="n">cat</span> <span class="o">+</span> <span class="n">mouse</span> <span class="o">==</span> <span class="mi">100</span><span class="p">,</span>
       <span class="c"># We have 100 dollars (10000 cents):</span>
       <span class="c">#   dogs cost 15 dollars (1500 cents), </span>
       <span class="c">#   cats cost 1 dollar (100 cents), and </span>
@@ -844,38 +844,38 @@ How many of each should you buy?
 <h3>Sudoku</h3>
 
 <p><a target="_blank" href="http://www.dailysudoku.com/sudoku/">Sudoku</a> is a very popular puzzle.
-The goal is to insert the numbers in the boxes to satisfy only one condition: each row, column and 
-<tt>3x3</tt> box must contain the digits <tt>1</tt> through <tt>9</tt> exactly once. 
+The goal is to insert the numbers in the boxes to satisfy only one condition: each row, column and
+<tt>3x3</tt> box must contain the digits <tt>1</tt> through <tt>9</tt> exactly once.
 </p>
 
-<img src="http://research.microsoft.com/en-us/um/redmond/projects/z3/sudoku.png">
+<img style="width:213px;margin:20px;" src="examples/sudoku.png">
 
 <p>
 The following example encodes the suduko problem in Z3. Different sukudo instances can be solved
-by modifying the matrix <tt>instance</tt>. This example makes heavy use of 
+by modifying the matrix <tt>instance</tt>. This example makes heavy use of
 <a target="_blank" href="http://docs.python.org/tutorial/datastructures.html#list-comprehensions">list comprehensions</a>
 available in the Python programming language.
 </p>
 
 <example pref="puzzle.2"><html><body>
 <div class="highlight"><pre><span class="c"># 9x9 matrix of integer variables</span>
-<span class="n">X</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span> <span class="n">Int</span><span class="p">(</span><span class="s">"x_</span><span class="si">%s</span><span class="s">_</span><span class="si">%s</span><span class="s">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span> <span class="p">]</span> 
+<span class="n">X</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span> <span class="n">Int</span><span class="p">(</span><span class="s">"x_</span><span class="si">%s</span><span class="s">_</span><span class="si">%s</span><span class="s">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span> <span class="p">]</span>
       <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span> <span class="p">]</span>
 
 <span class="c"># each cell contains a value in {1, ..., 9}</span>
-<span class="n">cells_c</span>  <span class="o">=</span> <span class="p">[</span> <span class="n">And</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">9</span><span class="p">)</span> 
+<span class="n">cells_c</span>  <span class="o">=</span> <span class="p">[</span> <span class="n">And</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">9</span><span class="p">)</span>
              <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span> <span class="p">]</span>
 
 <span class="c"># each row contains a digit at most once</span>
 <span class="n">rows_c</span>   <span class="o">=</span> <span class="p">[</span> <span class="n">Distinct</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span> <span class="p">]</span>
 
 <span class="c"># each column contains a digit at most once</span>
-<span class="n">cols_c</span>   <span class="o">=</span> <span class="p">[</span> <span class="n">Distinct</span><span class="p">([</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span> <span class="p">])</span> 
+<span class="n">cols_c</span>   <span class="o">=</span> <span class="p">[</span> <span class="n">Distinct</span><span class="p">([</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span> <span class="p">])</span>
              <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span> <span class="p">]</span>
 
 <span class="c"># each 3x3 square contains a digit at most once</span>
-<span class="n">sq_c</span>     <span class="o">=</span> <span class="p">[</span> <span class="n">Distinct</span><span class="p">([</span> <span class="n">X</span><span class="p">[</span><span class="mi">3</span><span class="o">*</span><span class="n">i0</span> <span class="o">+</span> <span class="n">i</span><span class="p">][</span><span class="mi">3</span><span class="o">*</span><span class="n">j0</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span> 
-                        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">])</span> 
+<span class="n">sq_c</span>     <span class="o">=</span> <span class="p">[</span> <span class="n">Distinct</span><span class="p">([</span> <span class="n">X</span><span class="p">[</span><span class="mi">3</span><span class="o">*</span><span class="n">i0</span> <span class="o">+</span> <span class="n">i</span><span class="p">][</span><span class="mi">3</span><span class="o">*</span><span class="n">j0</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span>
+                        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">])</span>
              <span class="k">for</span> <span class="n">i0</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">j0</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">]</span>
 
 <span class="n">sudoku_c</span> <span class="o">=</span> <span class="n">cells_c</span> <span class="o">+</span> <span class="n">rows_c</span> <span class="o">+</span> <span class="n">cols_c</span> <span class="o">+</span> <span class="n">sq_c</span>
@@ -891,16 +891,16 @@ available in the Python programming language.
             <span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
             <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
 
-<span class="n">instance_c</span> <span class="o">=</span> <span class="p">[</span> <span class="n">If</span><span class="p">(</span><span class="n">instance</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> 
-                  <span class="bp">True</span><span class="p">,</span> 
-                  <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">instance</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span> 
+<span class="n">instance_c</span> <span class="o">=</span> <span class="p">[</span> <span class="n">If</span><span class="p">(</span><span class="n">instance</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span>
+                  <span class="bp">True</span><span class="p">,</span>
+                  <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">instance</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span> <span class="p">]</span>
 
 <span class="n">s</span> <span class="o">=</span> <span class="n">Solver</span><span class="p">()</span>
 <span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">sudoku_c</span> <span class="o">+</span> <span class="n">instance_c</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span> <span class="o">==</span> <span class="n">sat</span><span class="p">:</span>
     <span class="n">m</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">()</span>
-    <span class="n">r</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span> <span class="n">m</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span> <span class="p">]</span> 
+    <span class="n">r</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span> <span class="n">m</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span> <span class="p">]</span>
           <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span> <span class="p">]</span>
     <span class="n">print_matrix</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
@@ -911,11 +911,11 @@ available in the Python programming language.
 <h3>Eight Queens</h3>
 
 <p>
-The eight queens puzzle is the problem of placing eight chess queens on an 8x8 chessboard so that no two queens attack each other. 
+The eight queens puzzle is the problem of placing eight chess queens on an 8x8 chessboard so that no two queens attack each other.
 Thus, a solution requires that no two queens share the same row, column, or diagonal.
 </p>
 
-<p> <img src="http://research.microsoft.com/en-us/um/redmond/projects/z3/queens.png">
+<p> <img style="margin:20px;" src="examples/queens.png">
 </p>
 
 <example pref="puzzle.3"><html><body>
@@ -930,9 +930,9 @@ Thus, a solution requires that no two queens share the same row, column, or diag
 <span class="n">col_c</span> <span class="o">=</span> <span class="p">[</span> <span class="n">Distinct</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span> <span class="p">]</span>
 
 <span class="c"># Diagonal constraint</span>
-<span class="n">diag_c</span> <span class="o">=</span> <span class="p">[</span> <span class="n">If</span><span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">j</span><span class="p">,</span> 
-              <span class="bp">True</span><span class="p">,</span> 
-              <span class="n">And</span><span class="p">(</span><span class="n">Q</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">Q</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">i</span> <span class="o">-</span> <span class="n">j</span><span class="p">,</span> <span class="n">Q</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">Q</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">j</span> <span class="o">-</span> <span class="n">i</span><span class="p">))</span> 
+<span class="n">diag_c</span> <span class="o">=</span> <span class="p">[</span> <span class="n">If</span><span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">j</span><span class="p">,</span>
+              <span class="bp">True</span><span class="p">,</span>
+              <span class="n">And</span><span class="p">(</span><span class="n">Q</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">Q</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">i</span> <span class="o">-</span> <span class="n">j</span><span class="p">,</span> <span class="n">Q</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">Q</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">j</span> <span class="o">-</span> <span class="n">i</span><span class="p">))</span>
            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">]</span>
 
 <span class="n">solve</span><span class="p">(</span><span class="n">val_c</span> <span class="o">+</span> <span class="n">col_c</span> <span class="o">+</span> <span class="n">diag_c</span><span class="p">)</span>
@@ -944,10 +944,10 @@ Thus, a solution requires that no two queens share the same row, column, or diag
 <p>The <b>install problem</b> consists of determining whether a new set of packages can be installed in a system.
 This application is based on the article
 <a target="_blank" href="http://cseweb.ucsd.edu/~rjhala/papers/opium.pdf">OPIUM: Optimal Package Install/Uninstall Manager</a>.
-Many packages depend on other packages to provide some functionality. 
+Many packages depend on other packages to provide some functionality.
 Each distribution contains a meta-data file that
 explicates the requirements of each package of the distribution
-The meta-data contains details like the name, version, etc. More importantly, it contains 
+The meta-data contains details like the name, version, etc. More importantly, it contains
 <b>depends</b> and <b>conflicts</b>
 clauses that stipulate which other packages should be on the
 system. The depends clauses stipulate which other packages must be present.
@@ -963,7 +963,7 @@ packages <tt>b</tt>, <tt>c</tt> and <tt>z</tt>, we write:
 DependsOn(a, [b, c, z])
 </pre>
 
-<p><tt>DependsOn</tt> is a simple Python function that creates Z3 constraints that capture the 
+<p><tt>DependsOn</tt> is a simple Python function that creates Z3 constraints that capture the
 depends clause semantics.
 </p>
 
@@ -980,12 +980,12 @@ Thus, <tt>Depends(a, [b, c, z])</tt> generates the constraint
 And(Implies(a, b), Implies(a, c), Implies(a, z))
 </pre>
 
-<p>That is, if users install package <tt>a</tt>, they must also install packages 
-<tt>b</tt>, <tt>c</tt> and <tt>z</tt>. 
+<p>That is, if users install package <tt>a</tt>, they must also install packages
+<tt>b</tt>, <tt>c</tt> and <tt>z</tt>.
 </p>
 
 <p>
-If package <tt>d</tt> conflicts with package <tt>e</tt>, we write <tt>Conflict(d, e)</tt>. 
+If package <tt>d</tt> conflicts with package <tt>e</tt>, we write <tt>Conflict(d, e)</tt>.
 <tt>Conflict</tt> is also a simple Python function.
 </p>
 
@@ -995,7 +995,7 @@ def Conflict(p1, p2):
 </pre>
 
 <p><tt>Conflict(d, e)</tt> generates the constraint <tt>Or(Not(d), Not(e))</tt>.
-With these two functions, we can easily encode the example in the 
+With these two functions, we can easily encode the example in the
 <a target="_blank" href="http://cseweb.ucsd.edu/~rjhala/papers/opium.pdf">Opium article</a> (Section 2) in Z3Py as:
 </p>
 
