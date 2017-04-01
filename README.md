@@ -1,6 +1,6 @@
 # Z3py tutorial
 
-This project archives the files in the official [Z3py website](http://rise4fun.com/z3py), which was shut down due to security issues. The official [Z3 website] (http://z3.codeplex.com/) however is still online and [active](https://github.com/Z3Prover/z3).
+This project archives files in the official [Z3py website](http://rise4fun.com/z3py), which was shut down due to security issues. The official [Z3 website](http://z3.codeplex.com/) however is still online and [active](https://github.com/Z3Prover/z3).
 
 * [Introduction](http://ericpony.github.io/z3py-tutorial/guide-examples.htm)
 * [Strategies](http://ericpony.github.io/z3py-tutorial/strategies-examples.htm)
