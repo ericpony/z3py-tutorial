@@ -649,7 +649,7 @@ The following example demonstrates how to use Python list comprehensions in Z3Py
 <div class="highlight"><pre><span class="c"># Create list [1, ..., 5] </span>
 <span class="k">print</span> <span class="p">[</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="p">]</span>
 
-<span class="c"># Create two lists containg 5 integer variables</span>
+<span class="c"># Create two lists containing 5 integer variables</span>
 <span class="n">X</span> <span class="o">=</span> <span class="p">[</span> <span class="n">Int</span><span class="p">(</span><span class="s">'x</span><span class="si">%s</span><span class="s">'</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="p">]</span>
 <span class="n">Y</span> <span class="o">=</span> <span class="p">[</span> <span class="n">Int</span><span class="p">(</span><span class="s">'y</span><span class="si">%s</span><span class="s">'</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="p">]</span>
 <span class="k">print</span> <span class="n">X</span>
@@ -851,7 +851,7 @@ The goal is to insert the numbers in the boxes to satisfy only one condition: ea
 <img style="width:213px;margin:20px;" src="examples/sudoku.png">
 
 <p>
-The following example encodes the suduko problem in Z3. Different sukudo instances can be solved
+The following example encodes the sudoku problem in Z3. Different sudoku instances can be solved
 by modifying the matrix <tt>instance</tt>. This example makes heavy use of
 <a target="_blank" href="http://docs.python.org/tutorial/datastructures.html#list-comprehensions">list comprehensions</a>
 available in the Python programming language.
@@ -946,7 +946,7 @@ This application is based on the article
 <a target="_blank" href="http://cseweb.ucsd.edu/~rjhala/papers/opium.pdf">OPIUM: Optimal Package Install/Uninstall Manager</a>.
 Many packages depend on other packages to provide some functionality.
 Each distribution contains a meta-data file that
-explicates the requirements of each package of the distribution
+explicates the requirements of each package of the distribution.
 The meta-data contains details like the name, version, etc. More importantly, it contains
 <b>depends</b> and <b>conflicts</b>
 clauses that stipulate which other packages should be on the
