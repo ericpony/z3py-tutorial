@@ -503,7 +503,7 @@ The corresponding unsigned operators are
 </p>
 
 <example pref="bitvec.2"><html><body>
-<div class="highlight"><pre><span class="c"># Create to bit-vectors of size 32</span>
+<div class="highlight"><pre><span class="c"># Create two bit-vectors of size 32</span>
 <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">BitVecs</span><span class="p">(</span><span class="s">'x y'</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
 
 <span class="n">solve</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
@@ -527,7 +527,7 @@ The operator <tt>&gt;&gt;</tt> is the arithmetic shift right, and
 </p>
 
 <example pref="bitvec.3"><html><body>
-<div class="highlight"><pre><span class="c"># Create to bit-vectors of size 32</span>
+<div class="highlight"><pre><span class="c"># Create two bit-vectors of size 32</span>
 <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">BitVecs</span><span class="p">(</span><span class="s">'x y'</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
 
 <span class="n">solve</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span>
