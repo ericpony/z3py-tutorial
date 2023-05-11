@@ -63,12 +63,12 @@ and <tt>solve-eqs</tt> to each subgoal produced by <tt>simplify</tt>. In this ex
 <div class="highlight"><pre><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">Reals</span><span class="p">(</span><span class="s">'x y'</span><span class="p">)</span>
 <span class="n">g</span>  <span class="o">=</span> <span class="n">Goal</span><span class="p">()</span>
 <span class="n">g</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">g</span>
+<span class="k">print</span> (<span class="n">g</span>)
 
 <span class="n">t1</span> <span class="o">=</span> <span class="n">Tactic</span><span class="p">(</span><span class="s">'simplify'</span><span class="p">)</span>
 <span class="n">t2</span> <span class="o">=</span> <span class="n">Tactic</span><span class="p">(</span><span class="s">'solve-eqs'</span><span class="p">)</span>
 <span class="n">t</span>  <span class="o">=</span> <span class="n">Then</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">t</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="k">print</span> (<span class="n">t</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>)
 </pre></div>
 </body></html></example>
 
@@ -88,7 +88,7 @@ The tactic <tt>split-clause</tt> will select a clause <tt>Or(f_1, ..., f_n)</tt>
 <span class="n">t</span> <span class="o">=</span> <span class="n">Tactic</span><span class="p">(</span><span class="s">'split-clause'</span><span class="p">)</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">t</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">r</span><span class="p">:</span> 
-    <span class="k">print</span> <span class="n">g</span>
+    <span class="k">print</span> (<span class="n">g</span>)
 </pre></div>
 </body></html></example>
 
@@ -140,19 +140,19 @@ the number of iterations is greater than <tt>n</tt>.
 <span class="c"># Split all clauses"</span>
 <span class="n">split_all</span> <span class="o">=</span> <span class="n">Repeat</span><span class="p">(</span><span class="n">OrElse</span><span class="p">(</span><span class="n">Tactic</span><span class="p">(</span><span class="s">'split-clause'</span><span class="p">),</span>
                           <span class="n">Tactic</span><span class="p">(</span><span class="s">'skip'</span><span class="p">)))</span>
-<span class="k">print</span> <span class="n">split_all</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="k">print</span> (<span class="n">split_all</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>)
 
 <span class="n">split_at_most_2</span> <span class="o">=</span> <span class="n">Repeat</span><span class="p">(</span><span class="n">OrElse</span><span class="p">(</span><span class="n">Tactic</span><span class="p">(</span><span class="s">'split-clause'</span><span class="p">),</span>
                           <span class="n">Tactic</span><span class="p">(</span><span class="s">'skip'</span><span class="p">)),</span>
                          <span class="mi">1</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">split_at_most_2</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="k">print</span> (<span class="n">split_at_most_2</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>)
 
 <span class="c"># Split all clauses and solve equations</span>
 <span class="n">split_solve</span> <span class="o">=</span> <span class="n">Then</span><span class="p">(</span><span class="n">Repeat</span><span class="p">(</span><span class="n">OrElse</span><span class="p">(</span><span class="n">Tactic</span><span class="p">(</span><span class="s">'split-clause'</span><span class="p">),</span>
                                  <span class="n">Tactic</span><span class="p">(</span><span class="s">'skip'</span><span class="p">))),</span>
                    <span class="n">Tactic</span><span class="p">(</span><span class="s">'solve-eqs'</span><span class="p">))</span>
 
-<span class="k">print</span> <span class="n">split_solve</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="k">print</span> (<span class="n">split_solve</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>)
 </pre></div>
 </body></html></example>
 
@@ -173,7 +173,7 @@ Note that, this tactic generates one goal: the empty goal which is trivially sat
 <span class="n">split_all</span> <span class="o">=</span> <span class="n">Repeat</span><span class="p">(</span><span class="n">OrElse</span><span class="p">(</span><span class="n">Tactic</span><span class="p">(</span><span class="s">'split-clause'</span><span class="p">),</span>
                           <span class="n">Tactic</span><span class="p">(</span><span class="s">'skip'</span><span class="p">)))</span>
 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">split_all</span><span class="p">(</span><span class="n">g</span><span class="p">):</span>
-    <span class="k">print</span> <span class="n">s</span>
+    <span class="k">print</span> (<span class="n">s</span>)
 </pre></div>
 </body></html></example>
 
@@ -214,11 +214,11 @@ which tries to compress Boolean formulas using And-Inverted Graphs.
                  <span class="s">'sat'</span><span class="p">)</span><span class="o">.</span><span class="n">solver</span><span class="p">()</span>
 <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">BitVecs</span><span class="p">(</span><span class="s">'x y'</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
 <span class="n">bv_solver</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mi">32</span> <span class="o">+</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">13</span><span class="p">,</span> <span class="n">x</span> <span class="o">&amp;</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">,</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">100</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">bv_solver</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+<span class="k">print</span> (<span class="n">bv_solver</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>)
 <span class="n">m</span> <span class="o">=</span> <span class="n">bv_solver</span><span class="o">.</span><span class="n">model</span><span class="p">()</span>
-<span class="k">print</span> <span class="n">m</span>
-<span class="k">print</span> <span class="n">x</span><span class="o">*</span><span class="mi">32</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="s">"=="</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mi">32</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">x</span> <span class="o">&amp;</span> <span class="n">y</span><span class="p">,</span> <span class="s">"=="</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x</span> <span class="o">&amp;</span> <span class="n">y</span><span class="p">)</span>
+<span class="k">print</span> (<span class="n">m</span>)
+<span class="k">print</span> (<span class="n">x</span><span class="o">*</span><span class="mi">32</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="s">"=="</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mi">32</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>)
+<span class="k">print</span> (<span class="n">x</span> <span class="o">&amp;</span> <span class="n">y</span><span class="p">,</span> <span class="s">"=="</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x</span> <span class="o">&amp;</span> <span class="n">y</span><span class="p">)</span>)
 </pre></div>
 </body></html></example>
 
@@ -228,8 +228,8 @@ which tries to compress Boolean formulas using And-Inverted Graphs.
 <div class="highlight"><pre><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">Ints</span><span class="p">(</span><span class="s">'x y'</span><span class="p">)</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">Tactic</span><span class="p">(</span><span class="s">'smt'</span><span class="p">)</span><span class="o">.</span><span class="n">solver</span><span class="p">()</span>
 <span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
-<span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">()</span>
+<span class="k">print</span> (<span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>)
+<span class="k">print</span> (<span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">()</span>)
 </pre></div>
 </body></html></example>
 
@@ -270,15 +270,15 @@ use model converters to convert a model for a subgoal into a model for the origi
 
 <span class="n">r</span> <span class="o">=</span> <span class="n">t</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
 <span class="c"># r contains only one subgoal</span>
-<span class="k">print</span> <span class="n">r</span>
+<span class="k">print</span> (<span class="n">r</span>)
 
 <span class="n">s</span> <span class="o">=</span> <span class="n">Solver</span><span class="p">()</span>
 <span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+<span class="k">print</span> (<span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>)
 <span class="c"># Model for the subgoal</span>
-<span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">()</span>
+<span class="k">print</span> (<span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">()</span>)
 <span class="c"># Model for the original goal</span>
-<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">convert_model</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">())</span>
+<span class="k">print</span> (<span class="n">r</span><span class="o">.</span><span class="n">convert_model</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">())</span>)
 </pre></div>
 </body></html></example>
 
@@ -306,18 +306,18 @@ to a goal.</p>
 <span class="n">g</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">p</span> <span class="o">=</span> <span class="n">Probe</span><span class="p">(</span><span class="s">'num-consts'</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">"num-consts:"</span><span class="p">,</span> <span class="n">p</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="k">print</span> (<span class="s">"num-consts:"</span><span class="p">,</span> <span class="n">p</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>)
 
 <span class="n">t</span> <span class="o">=</span> <span class="n">FailIf</span><span class="p">(</span><span class="n">p</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="n">t</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
 <span class="k">except</span> <span class="n">Z3Exception</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s">"tactic failed"</span>
+    <span class="k">print</span> (<span class="s">"tactic failed"</span>)
 
-<span class="k">print</span> <span class="s">"trying again..."</span>
+<span class="k">print</span> (<span class="s">"trying again..."</span>)
 <span class="n">g</span> <span class="o">=</span> <span class="n">Goal</span><span class="p">()</span>
 <span class="n">g</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">t</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="k">print</span> (<span class="n">t</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>)
 </pre></div>
 </body></html></example>
 
@@ -340,12 +340,12 @@ The following example demonstrates how to use the <tt>If</tt> combinator.</p>
 <span class="n">p</span> <span class="o">=</span> <span class="n">Probe</span><span class="p">(</span><span class="s">'num-consts'</span><span class="p">)</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">If</span><span class="p">(</span><span class="n">p</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'simplify'</span><span class="p">,</span> <span class="s">'factor'</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="n">t</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="k">print</span> (<span class="n">t</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>)
 
 <span class="n">g</span> <span class="o">=</span> <span class="n">Goal</span><span class="p">()</span>
 <span class="n">g</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="n">t</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="k">print</span> (<span class="n">t</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>)
 </pre></div>
 </body></html></example>
 

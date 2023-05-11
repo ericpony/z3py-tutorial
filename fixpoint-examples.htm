@@ -59,13 +59,13 @@ how to pose queries.
 <span class="n">fp</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
 <span class="n">fp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">engine</span><span class="o">=</span><span class="s">'datalog'</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="s">"current set of rules</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">fp</span>
-<span class="k">print</span> <span class="n">fp</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span> (<span class="s">"current set of rules</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">fp</span>)
+<span class="k">print</span> (<span class="n">fp</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>)
 
 <span class="n">fp</span><span class="o">.</span><span class="n">fact</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">"updated set of rules</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">fp</span>
-<span class="k">print</span> <span class="n">fp</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">fp</span><span class="o">.</span><span class="n">get_answer</span><span class="p">()</span>
+<span class="k">print</span> (<span class="s">"updated set of rules</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">fp</span>)
+<span class="k">print</span> (<span class="n">fp</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>)
+<span class="k">print</span> (<span class="n">fp</span><span class="o">.</span><span class="n">get_answer</span><span class="p">()</span>)
 </pre></div>
 </body></html></example>
 
@@ -121,8 +121,8 @@ in the derivation.
 <span class="n">fp</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
 <span class="n">fp</span><span class="o">.</span><span class="n">fact</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 <span class="n">fp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">generate_explanations</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s">'datalog'</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">fp</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">fp</span><span class="o">.</span><span class="n">get_answer</span><span class="p">()</span>
+<span class="k">print</span> (<span class="n">fp</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>)
+<span class="k">print</span> (<span class="n">fp</span><span class="o">.</span><span class="n">get_answer</span><span class="p">()</span>)
 </pre></div>
 </body></html></example>
 
@@ -156,12 +156,12 @@ using edges and paths in a graph.
 <span class="n">fp</span><span class="o">.</span><span class="n">fact</span><span class="p">(</span><span class="n">edge</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span><span class="n">v3</span><span class="p">))</span>
 <span class="n">fp</span><span class="o">.</span><span class="n">fact</span><span class="p">(</span><span class="n">edge</span><span class="p">(</span><span class="n">v2</span><span class="p">,</span><span class="n">v4</span><span class="p">))</span>
 
-<span class="k">print</span> <span class="s">"current set of rules"</span><span class="p">,</span> <span class="n">fp</span>
+<span class="k">print</span> (<span class="s">"current set of rules"</span><span class="p">,</span> <span class="n">fp</span>)
 
 
-<span class="k">print</span> <span class="n">fp</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">path</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span><span class="n">v4</span><span class="p">)),</span> <span class="s">"yes we can reach v4 from v1"</span>
+<span class="k">print</span> (<span class="n">fp</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">path</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span><span class="n">v4</span><span class="p">)),</span> <span class="s">"yes we can reach v4 from v1"</span>)
 
-<span class="k">print</span> <span class="n">fp</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">path</span><span class="p">(</span><span class="n">v3</span><span class="p">,</span><span class="n">v4</span><span class="p">)),</span> <span class="s">"no we cannot reach v4 from v3"</span>
+<span class="k">print</span> (<span class="n">fp</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">path</span><span class="p">(</span><span class="n">v3</span><span class="p">,</span><span class="n">v4</span><span class="p">)),</span> <span class="s">"no we cannot reach v4 from v3"</span>)
 </pre></div>
 </body></html></example>
 
@@ -302,10 +302,10 @@ an online puzzle you can solve manually, or cheat on by asking Z3</a>.
     <span class="n">lastAnd</span> <span class="o">=</span> <span class="n">ans</span><span class="o">.</span><span class="n">arg</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">children</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">trace</span> <span class="o">=</span> <span class="n">lastAnd</span><span class="o">.</span><span class="n">children</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
     <span class="k">while</span> <span class="n">trace</span><span class="o">.</span><span class="n">num_args</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-	<span class="k">print</span> <span class="n">trace</span><span class="o">.</span><span class="n">decl</span><span class="p">()</span>
+	<span class="k">print</span> (<span class="n">trace</span><span class="o">.</span><span class="n">decl</span><span class="p">()</span>)
 	<span class="n">trace</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">children</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
-<span class="k">print</span> <span class="n">fp</span>
+<span class="k">print</span> (<span class="n">fp</span>)
 
 <span class="n">goal</span> <span class="o">=</span> <span class="n">state</span><span class="p">([</span> <span class="p">(</span><span class="n">num</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="k">if</span> <span class="n">cars</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">red_car</span> <span class="k">else</span> <span class="n">bound</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
 	       <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_cars</span><span class="p">)])</span>
@@ -366,17 +366,17 @@ that the state after the loop does not exceed the bound.
 <span class="n">s</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="n">l0</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">m</span><span class="p">),</span> <span class="p">[</span><span class="n">l0</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">m</span><span class="p">),</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">])</span>
 <span class="n">s</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="n">l1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">m</span><span class="p">),</span>   <span class="p">[</span><span class="n">l0</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">m</span><span class="p">),</span> <span class="n">m</span> <span class="o">&lt;=</span> <span class="n">x</span><span class="p">])</span>
 
-<span class="k">print</span> <span class="s">"At l0 we learn that x, y are non-negative:"</span>
-<span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">l0</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span>
-<span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">get_answer</span><span class="p">()</span>
+<span class="k">print</span> (<span class="s">"At l0 we learn that x, y are non-negative:"</span>)
+<span class="k">print</span> (<span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">l0</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span>)
+<span class="k">print</span> (<span class="n">s</span><span class="o">.</span><span class="n">get_answer</span><span class="p">()</span>)
 
-<span class="k">print</span> <span class="s">"At l1 we learn that x &lt;= y and both x and y are bigger than 0:"</span>
-<span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">l1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span>
-<span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">get_answer</span><span class="p">()</span>
+<span class="k">print</span> (<span class="s">"At l1 we learn that x &lt;= y and both x and y are bigger than 0:"</span>)
+<span class="k">print</span> (<span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">l1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span>)
+<span class="k">print</span> (<span class="n">s</span><span class="o">.</span><span class="n">get_answer</span><span class="p">()</span>)
 
 
-<span class="k">print</span> <span class="s">"The state where x &lt; y is not reachable"</span>
-<span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">l1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">))</span>
+<span class="k">print</span> (<span class="s">"The state where x &lt; y is not reachable"</span>)
+<span class="k">print</span> (<span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">l1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">))</span>)
 </pre></div>
 </body></html></example>
 
@@ -438,14 +438,14 @@ of relations.
 <span class="n">fp</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="n">mc</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">m</span><span class="o">-</span><span class="mi">10</span><span class="p">),</span> <span class="n">m</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">fp</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="n">mc</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="p">[</span><span class="n">m</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">mc</span><span class="p">(</span><span class="n">m</span><span class="o">+</span><span class="mi">11</span><span class="p">,</span><span class="n">p</span><span class="p">),</span><span class="n">mc</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">n</span><span class="p">)])</span>
     
-<span class="k">print</span> <span class="n">fp</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">mc</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">),</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">90</span><span class="p">))</span>
-<span class="k">print</span> <span class="n">fp</span><span class="o">.</span><span class="n">get_answer</span><span class="p">()</span>
+<span class="k">print</span> (<span class="n">fp</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">mc</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">),</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">90</span><span class="p">))</span>)
+<span class="k">print</span> (<span class="n">fp</span><span class="o">.</span><span class="n">get_answer</span><span class="p">()</span>)
 
-<span class="k">print</span> <span class="n">fp</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">mc</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">),</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">91</span><span class="p">))</span>
-<span class="k">print</span> <span class="n">fp</span><span class="o">.</span><span class="n">get_answer</span><span class="p">()</span>
+<span class="k">print</span> (<span class="n">fp</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">mc</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">),</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">91</span><span class="p">))</span>)
+<span class="k">print</span> (<span class="n">fp</span><span class="o">.</span><span class="n">get_answer</span><span class="p">()</span>)
 
-<span class="k">print</span> <span class="n">fp</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">mc</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">),</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">92</span><span class="p">))</span>
-<span class="k">print</span> <span class="n">fp</span><span class="o">.</span><span class="n">get_answer</span><span class="p">()</span>
+<span class="k">print</span> (<span class="n">fp</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">mc</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">),</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">92</span><span class="p">))</span>)
+<span class="k">print</span> (<span class="n">fp</span><span class="o">.</span><span class="n">get_answer</span><span class="p">()</span>)
 </pre></div>
 </body></html></example>
 
@@ -538,10 +538,10 @@ and Lamport's two process Bakery algorithm in the next example.
 	<span class="bp">self</span><span class="o">.</span><span class="n">declare_reachability</span><span class="p">()</span>
 	<span class="bp">self</span><span class="o">.</span><span class="n">declare_transitions</span><span class="p">()</span>
 	<span class="n">query</span> <span class="o">=</span> <span class="n">And</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state0</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">abstract</span><span class="p">(</span><span class="n">query</span><span class="p">))</span>
-	<span class="k">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">fp</span>
-	<span class="k">print</span> <span class="n">query</span>
-	<span class="k">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">fp</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
-	<span class="k">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">fp</span><span class="o">.</span><span class="n">get_answer</span><span class="p">()</span>
+	<span class="k">print</span> (<span class="bp">self</span><span class="o">.</span><span class="n">fp</span>)
+	<span class="k">print</span> (<span class="n">query</span>)
+	<span class="k">print</span> (<span class="bp">self</span><span class="o">.</span><span class="n">fp</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>)
+	<span class="k">print</span> (<span class="bp">self</span><span class="o">.</span><span class="n">fp</span><span class="o">.</span><span class="n">get_answer</span><span class="p">()</span>)
 <span class="c">#	print self.fp.statistics()</span>
 
 
@@ -638,11 +638,11 @@ being evaluated.
 <span class="n">fp</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="n">Eval</span><span class="p">(</span><span class="n">App</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">I</span><span class="p">(</span><span class="n">xi</span><span class="p">)),</span><span class="n">I</span><span class="p">(</span><span class="n">yi</span><span class="p">),</span><span class="n">I</span><span class="p">(</span><span class="n">xi</span><span class="p">)),</span><span class="n">xi</span> <span class="o">&gt;=</span> <span class="n">yi</span><span class="p">)</span>
 <span class="n">fp</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="n">Eval</span><span class="p">(</span><span class="n">App</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">I</span><span class="p">(</span><span class="n">xi</span><span class="p">)),</span><span class="n">I</span><span class="p">(</span><span class="n">yi</span><span class="p">),</span><span class="n">I</span><span class="p">(</span><span class="n">yi</span><span class="p">)),</span><span class="n">xi</span> <span class="o">&lt;</span> <span class="n">yi</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="n">fp</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">Eval</span><span class="p">(</span><span class="n">App</span><span class="p">(</span><span class="n">App</span><span class="p">(</span><span class="n">App</span><span class="p">(</span><span class="n">Max</span><span class="p">,</span><span class="n">f</span><span class="p">),</span><span class="n">x</span><span class="p">),</span><span class="n">y</span><span class="p">),</span><span class="n">z</span><span class="p">,</span><span class="n">r1</span><span class="p">),</span>
+<span class="k">print</span> (<span class="n">fp</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">Eval</span><span class="p">(</span><span class="n">App</span><span class="p">(</span><span class="n">App</span><span class="p">(</span><span class="n">App</span><span class="p">(</span><span class="n">Max</span><span class="p">,</span><span class="n">f</span><span class="p">),</span><span class="n">x</span><span class="p">),</span><span class="n">y</span><span class="p">),</span><span class="n">z</span><span class="p">,</span><span class="n">r1</span><span class="p">),</span>)
 		   <span class="n">Eval</span><span class="p">(</span><span class="n">App</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">x</span><span class="p">),</span><span class="n">r1</span><span class="p">,</span><span class="n">r2</span><span class="p">),</span>
 		   <span class="n">r1</span> <span class="o">!=</span> <span class="n">r2</span><span class="p">))</span>
 
-<span class="k">print</span> <span class="n">fp</span><span class="o">.</span><span class="n">get_answer</span><span class="p">()</span>
+<span class="k">print</span> (<span class="n">fp</span><span class="o">.</span><span class="n">get_answer</span><span class="p">()</span>)
 </pre></div>
 </body></html></example>
 
